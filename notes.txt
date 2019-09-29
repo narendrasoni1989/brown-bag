@@ -1,0 +1,55 @@
+"aws-amplify": "^1.1.35",
+"aws-amplify-react": "^2.3.12",
+
+- enable link for login and logout in app-header
+- enable route for /auth in app.js
+
+
+// auth.js
+const signUpConfig = {
+    header: 'Brown Bag Sign Up',
+    hideAllDefaults: true,
+    includeGreetings: false,
+    signUpFields: [
+      {
+        label: 'Email',
+        key: 'email',
+        required: true,
+        displayOrder: 1,
+        type: 'string'
+      },
+      {
+        label: 'Password',
+        key: 'password',
+        required: true,
+        displayOrder: 2,
+        type: 'password'
+      }
+    ]
+  };
+
+
+  class AuthComponent extends React.Component {
+    handleStateChange = state => {
+      if (state === 'signedIn') {
+        this.props.onUserSignIn();
+        this.props.history.push('/');
+      }
+    };
+    render() {
+      const { isLoggedIn } = this.props.isLoggedIn;
+      return (
+        <div>
+          {!isLoggedIn && (
+            <Authenticator 
+            signUpConfig={signUpConfig} 
+            usernameAttributes={'email'} 
+            includeGreetings={false}  
+            onStateChange={this.handleStateChange} 
+            hideDefault={false}
+            />
+          )}
+        </div>
+      );
+    }
+  }

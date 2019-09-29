@@ -2,8 +2,8 @@ import React from 'react';
 import './app.css';
 import Header from './header';
 import { Route,Switch,Redirect,BrowserRouter as Router, } from 'react-router-dom';
-import Amplify from 'aws-amplify';
-import awsconfig from '../../aws-exports';
+//import Amplify from 'aws-amplify';
+//import awsconfig from '../../aws-exports';
 import { Auth } from 'aws-amplify'
 import AuthComponent from './auth/auth';
 
@@ -11,7 +11,7 @@ import Home from '../../routes/home';
 import Link1 from '../../routes/link1';
 
 
-Amplify.configure(awsconfig);
+//Amplify.configure(awsconfig);
 
 
 const ProppedRoute = ({ render: C, props: childProps, ...rest }) => (
@@ -23,12 +23,12 @@ const Routes = ({ childProps }) => (
   <Switch>
     <Route exact path="/" component={Home} />
     <Route exact path="/link1" component={Link1} />
-    <ProppedRoute
+   {/* <ProppedRoute
       exact
       path="/auth"
       render={AuthComponent}
       props={childProps}
-    />
+   /> */}
   </Switch>
 );
 
