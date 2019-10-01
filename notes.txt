@@ -53,3 +53,59 @@ const signUpConfig = {
       );
     }
   }
+
+
+  ---- step - 1 ----
+  1.) signup account
+  2.) npm install -g @aws-amplify/cli
+  3.) amplify configure // creates user in AWS with roles and IAM permission 
+  4.) Setup backend
+        amplify init
+        amplify status
+  5.) Add amplify categories
+      amplify add <category-name>      // api, auth etc
+      amplify update <category-name>
+      amplify remove <category-name>
+      amplify delete <category-name>    // This will attempt to delete your entire project, locally and in the cloud, essentially resetting your project as if you never ran amplify init
+      amplify push
+  6.) Integrate Amplify in project
+  7.) Authentication
+      amplify add auth
+      (If you choose the 'Default configuration with Social Provider (Federation)', the providers will be fe
+derated with Cognito User Pools.)
+
+
+      import Amplify, { Auth } from 'aws-amplify';
+      import awsconfig from './aws-exports';
+      Amplify.configure(awsconfig);
+
+
+
+const signUpConfig = {
+    header: 'Brown Bag Sign Up',
+    hideAllDefaults: true,
+    includeGreetings: false,
+    signUpFields: [
+      {
+        label: 'Name',
+        key: 'name',
+        required: true,
+        displayOrder: 1,
+        type: 'string'
+      },
+      {
+        label: 'Email',
+        key: 'email',
+        required: true,
+        displayOrder: 2,
+        type: 'string'
+      },
+      {
+        label: 'Password',
+        key: 'password',
+        required: true,
+        displayOrder: 4,
+        type: 'password'
+      }
+    ]
+  };

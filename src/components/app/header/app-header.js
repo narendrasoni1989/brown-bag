@@ -58,10 +58,10 @@ class AppHeader extends React.Component {
               <NavLink className="nav-link" exact to="/link1">Link1</NavLink>
             </li>
           </ul>
-  {/*
+  
           { this.props.loginStatus===true && <NavLink className="nav-link" exact to="#" onClick={this.signOut}>Logout</NavLink> }
           { this.props.loginStatus===false && <NavLink className="nav-link" exact to="/auth">Login</NavLink> }
-  */}
+  
         </div>
       </nav>
     )
